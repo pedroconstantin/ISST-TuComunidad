@@ -58,9 +58,9 @@ class REUNIONList extends Component {
                     <Table className="mt-4">
                         <thead>
                         <tr>
-                            <th width="30%">Idreunion</th>
+                            <th width="30%">Nº</th>
                             <th width="30%">Fecha y hora</th>
-                            <th width="30%">Descripcion</th>
+                            <th width="30%">Detalles de la reunion</th>
                         </tr>
                         </thead>
                         <tbody>

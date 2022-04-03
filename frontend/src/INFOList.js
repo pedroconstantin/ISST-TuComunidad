@@ -59,11 +59,11 @@ class INFOList extends Component {
                     <Table className="mt-4">
                         <thead>
                         <tr>
-                            <th width="15%">Idinfo</th>
+                            <th width="15%">Nº</th>
                             <th width="15%">Tema</th>
-                            <th width="30%">Contenido</th>
+                            <th width="30%">Publicación</th>
                             <th width="15%">Vecino</th>
-                            <th width="15%">Actiones</th>
+                            <th width="15%">Acciones</th>
                         </tr>
                         </thead>
                         <tbody>
