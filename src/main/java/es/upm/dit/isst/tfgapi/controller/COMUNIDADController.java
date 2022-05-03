@@ -16,57 +16,56 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import es.upm.dit.isst.tfgapi.model.INFO;
-import es.upm.dit.isst.tfgapi.repository.INFORepository;
+import es.upm.dit.isst.tfgapi.model.COMUNIDAD;
+import es.upm.dit.isst.tfgapi.repository.COMUNIDADRepository;
 
 @RestController
-public class INFOController {
+public class COMUNIDADController {
 
-    private final INFORepository infoRepository;
+    private final COMUNIDADRepository comunidadRepository;
 
-    public static final Logger log = LoggerFactory.getLogger(INFOController.class);
+    public static final Logger log = LoggerFactory.getLogger(COMUNIDADController.class);
 
-    public INFOController(INFORepository i) {
+    public COMUNIDADController(COMUNIDADRepository i) {
 
-        this.infoRepository = i;
+        this.comunidadRepository = i;
 
     }
 
-    @GetMapping("/infos")
+    @GetMapping("/comunidads")
 
-    List<INFO> readAll() {
+    List<COMUNIDAD> readAll() {
 
-      return (List<INFO>) infoRepository.findAll();
+      return (List<COMUNIDAD>) comunidadRepository.findAll();
+
+    }
+
+
+    @PostMapping("/comunidads")
+
+    ResponseEntity<COMUNIDAD> create(@RequestBody COMUNIDAD newCOMUNIDAD) throws URISyntaxException {
+
+      COMUNIDAD result = comunidadRepository.save(newCOMUNIDAD);
+
+      return ResponseEntity.created(new URI("/comunidads/" + result.getId())).body(result);
 
     }
 
  
 
-    @PostMapping("/infos")
+    @GetMapping("/comunidads/{id}")
 
-    ResponseEntity<INFO> create(@RequestBody INFO newINFO) throws URISyntaxException {
+    ResponseEntity<COMUNIDAD> read(@PathVariable String id) {
 
-      INFO result = infoRepository.save(newINFO);
-
-      return ResponseEntity.created(new URI("/infos/" + result.getIdinfo())).body(result);
-
-    }
-
- 
-
-    @GetMapping("/infos/{id}")
-
-    ResponseEntity<INFO> read(@PathVariable String id) {
-
-      return infoRepository.findById(id).map(info ->
+      return comunidadRepository.findById(id).map(info ->
 
          ResponseEntity.ok().body(info)
 
-      ).orElse(new ResponseEntity<INFO>(HttpStatus.NOT_FOUND));
+      ).orElse(new ResponseEntity<COMUNIDAD>(HttpStatus.NOT_FOUND));
 
+  
     }
-
-
+/*
     @PutMapping("/infos/{id}")
 
     ResponseEntity<INFO> update(@RequestBody INFO newINFO, @PathVariable String id) {
@@ -88,18 +87,18 @@ public class INFOController {
     }
 
 
-    @DeleteMapping("infos/{id}")
+    @DeleteMapping("comunidad/{id}")
 
-    ResponseEntity<INFO> delete(@PathVariable String id) {
+    ResponseEntity<COMUNIDAD> delete(@PathVariable String id) {
 
-      infoRepository.deleteById(id);
+      comunidadRepository.deleteById(id);
 
       return ResponseEntity.ok().body(null);
 
     }
 
-
-    /*@GetMapping("/tfgs/profesor/{id}")
+/*
+    @GetMapping("/tfgs/profesor/{id}")
 
     List<TFG> readTutor(@PathVariable String id) {
 
