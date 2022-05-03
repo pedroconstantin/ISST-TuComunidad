@@ -8,6 +8,7 @@ import REUNIONList from './REUNIONList';
 import REUNIONEdit from './REUNIONEdit';
 import VOTACIONList from './VOTACIONList';
 import RESERVAList from './RESERVAList';
+import VOTACIONEdit from './VOTACIONEdit';
 class App extends Component {
   render() {
     return (
@@ -19,6 +20,7 @@ class App extends Component {
             <Route path='/reunions' exact={true} component={REUNIONList}/>
             <Route path='/reunions/:idreunion' component={REUNIONEdit}/>
             <Route path='/votacions' exact={true} component={VOTACIONList}/>
+            <Route path='/votacions/:idvotacion' component={VOTACIONEdit}/>
             <Route path='/reservas' exact={true} component={RESERVAList}/>
 
           </Switch>
