@@ -4,9 +4,9 @@ package es.upm.dit.isst.tfgapi.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import es.upm.dit.isst.tfgapi.model.INFO;
+import es.upm.dit.isst.tfgapi.model.RESERVA;
 
-public interface INFORepository extends CrudRepository<INFO, String> {
+public interface RESERVARepository extends CrudRepository<RESERVA, String> {
 
    // List<TFG> findByTutor(String tutor);
 
